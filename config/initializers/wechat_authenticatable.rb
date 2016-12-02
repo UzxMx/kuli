@@ -9,13 +9,15 @@ module Devise
 
       def authenticate!
         begin
+          puts "authenticate!"
           json = get_access_token(params[:code])
           user_info = get_user_info(json[:access_token], json[:openid])
 
           puts "user_info: #{JSON.generate(user_info)}"
-          success!
+          # success!
         rescue Exception => e
-          fail
+          puts e
+          # fail
         end
       end
 
