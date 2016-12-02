@@ -13,6 +13,6 @@ module Kuli
     # -- all .rb files in that directory are automatically loaded.
 
     WECHAT_APP_ID = 'wx8035a1ddcde237dc'
-    WECHAT_APP_SECRET = ''
+    WECHAT_APP_SECRET = 'bf37388e9b00d6005e04ca832e87f9db'
   end
 end

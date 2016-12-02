@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'warden', path: '/Users/xmx/projects/warden'
 gem 'devise'
 
 group :development, :test do
