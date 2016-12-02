@@ -22,6 +22,7 @@ module Devise
           remember_me(user)
           success!(user)
         rescue Exception => e
+          puts e
           fail
         end
       end
