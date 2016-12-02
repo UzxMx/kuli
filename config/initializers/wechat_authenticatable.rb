@@ -4,7 +4,7 @@ module Devise
   module Strategies
     class WechatAuthenticatable < Authenticatable
       def valid?
-        params[:code].present? and params[:state].present and params[:state] == 'senxie'
+        params[:code].present? and params[:state].present? and params[:state] == 'senxie'
       end
 
       def authenticate!
