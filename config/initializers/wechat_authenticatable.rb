@@ -9,12 +9,18 @@ module Devise
 
       def authenticate!
         begin
-          puts "authenticate!"
+          puts "wechat authenticate!"
           json = get_access_token(params[:code])
           user_info = get_user_info(json[:access_token], json[:openid])
 
-          puts "user_info: #{JSON.generate(user_info)}"
-          success!
+          openid = user_info[:openid]
+          user = mapping.to.where(open_id: openid).first_or_create! do |user|
+            user.open_id = openid
+          end
+          user.raw_auth = JSON.generate(user_info)
+          user.save!
+          remember_me(user)
+          success!(user)
         rescue Exception => e
           fail
         end
@@ -30,7 +36,6 @@ module Devise
         end
 
         def send_request(url)
-          puts url
           url = URI.parse(url)
           req = Net::HTTP::Get.new(url.to_s)
           res = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == 'https') { |http|
