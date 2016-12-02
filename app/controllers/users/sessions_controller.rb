@@ -32,6 +32,9 @@ class Users::SessionsController < Devise::SessionsController
   private
     def authenticate
       self.resource = warden.authenticate!({scope: resource_name, recall: "#{controller_path}#fail"})
+
+      # after this, user already authenticated
+      redirect_to root_path
     end
 
 end
