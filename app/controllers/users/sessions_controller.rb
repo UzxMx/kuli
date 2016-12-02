@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   def fail
     logger.debug("fail")
 
-    redirect_to 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8035a1ddcde237dc&redirect_uri=http%3a%2f%2fsenxieyoujia.com%2fusers%2fsign_in&response_type=code&scope=snsapi_userinfo&state=senxie#wechat_redirect'    
+    redirect_to 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8035a1ddcde237dc&redirect_uri=http%3a%2f%2fwww.senxieyoujia.com%2fusers%2fsign_in&response_type=code&scope=snsapi_userinfo&state=senxie#wechat_redirect'    
   end  
 
   # DELETE /resource/sign_out

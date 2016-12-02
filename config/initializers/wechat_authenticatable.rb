@@ -14,10 +14,9 @@ module Devise
           user_info = get_user_info(json[:access_token], json[:openid])
 
           puts "user_info: #{JSON.generate(user_info)}"
-          # success!
+          success!
         rescue Exception => e
-          puts e
-          # fail
+          fail
         end
       end
 
@@ -31,12 +30,14 @@ module Devise
         end
 
         def send_request(url)
+          puts url
           url = URI.parse(url)
           req = Net::HTTP::Get.new(url.to_s)
-          res = Net::HTTP.start(url.host, url.port) { |http|
+          res = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == 'https') { |http|
             http.request(req)
           }
-          json = JSON.parse(res.body, symbolize_keys: true)
+          # in ruby it's symbolize_names, in rails it's symbolize_keys
+          json = JSON.parse(res.body, symbolize_names: true)
           json     
         end      
     end
