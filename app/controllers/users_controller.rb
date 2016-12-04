@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-
+  
   # GET /users/fill_info
   def fill_info_view
     @regions = Region.all

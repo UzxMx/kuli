@@ -4,7 +4,7 @@ module Devise
   module Strategies
     class MockAuthenticatable < Authenticatable
       def valid?
-        true
+        !request.original_fullpath.start_with?('/admin')
       end
 
       def authenticate!

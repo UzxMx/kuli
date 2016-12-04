@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
-
+  
   # GET /orders
   # GET /orders.json
   def index

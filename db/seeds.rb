@@ -11,6 +11,8 @@ prepare_test_data = false
 
 # prepare data for production use
 if prepare_production_data
+  Admin::User.new(email: 'admin@senxie.com', password: 'Sxyj,123456').save!
+
   regions = ['浦东新区', '徐汇区', '黄浦区', '卢湾区', '静安区', '长宁区', '闵行区', '杨浦区', '普陀区', '虹口区', '宝山区', '闸北区', '松江区', '嘉定区', '青浦区', '奉贤区', '金山区']
   regions.each do |r|
     region = Region.new(name: r)

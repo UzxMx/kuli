@@ -11,20 +11,15 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require home
- *= require orders
- *= require stores
+ *= require_tree ./admin
  */
 @import "compass/css3";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
-  padding-top: 50px;
-}
-
-body.users.fill_info_view {
-  padding-top: 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 img {
@@ -33,4 +28,14 @@ img {
 
 .container-pagination {
   text-align: center;
+}
+
+.dl-horizontal {
+  dt {
+    text-align: left;
+  }
+
+  dd {
+    margin-bottom: 10px;
+  }
 }

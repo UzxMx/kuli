@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6"><h4>用户信息</h4></div>
+    <div class="col-sm-6" style="text-align:right;">
+      <div>
+        <%= link_to '查看订单列表', admin_user_orders_path(@user.id), class: 'btn btn-default' %>
+        <%= link_to '查看店铺列表', admin_user_stores_path(@user.id), class: 'btn btn-default' %>        
+      </div>      
+    </div>
+  </div>  
+  <dl class="dl-horizontal">
+    <dt>用户名称</dt>
+    <dd><%= @user.name %></dd>
+    <dt>所在院校</dt>
+    <dd><%= @user.school %></dd>
+    <dt>收货地址</dt>
+    <dd><%= @user.shipping_address %></dd>
+    <dt>联系方式</dt>
+    <dd><%= @user.telephone %></dd>
+    <dt>所在区域</dt>
+    <dd><%= @user.region.name %></dd>
+    <dt>身份证正面图片</dt>
+    <dd>
+      <%= image_tag @user.id_card_picture.url %>
+    </dd>
+    <dt>身份证反面图片</dt>
+    <dd>
+      <%= image_tag @user.id_card_reverse_picture.url %>
+    </dd>    
+  </dl>
+</div>

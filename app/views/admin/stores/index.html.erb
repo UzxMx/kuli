@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <h4>店铺列表</h4>
+  <% if @stores_count == 0 %>
+  <p class="text-danger">当前店铺列表为空</p>
+  <% else %>
+  <div>共有<%= @stores_count %>个店铺</div>
+  <table class="table table-striped">
+    <thead>
+      <th>店铺名称</th>
+      <th>户主姓名</th>
+      <th>户主电话</th>
+      <th>创建人</th>
+      <th>创建时间</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @stores.each do |s| %>
+        <tr>
+          <td><%= s.name %></td>
+          <td><%= s.owner_name %></td>
+          <td><%= s.owner_telephone %></td>
+          <td><%= s.user.name %></td>
+          <td><%= beautify_date(s.created_at) %></td>
+          <td>
+            <%= link_to '查看', admin_store_path(s.id) %>
+            <%= link_to '删除该店铺', admin_store_path(s.id), method: :delete, data: {confirm: '确定要删除该店铺吗？'} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination(@current_page, @stores_count, page_size: @page_size) do |page| %>
+  <% admin_stores_path(page: page) %>
+  <% end %>
+  <% end %>
+</div>

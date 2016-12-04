@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <h4>用户列表</h4>
+  <% if @users_count == 0 %>
+  <p class="text-danger">当前用户列表为空</p>
+  <% else %>
+  <div>共有<%= @users_count %>个用户</div>
+  <table class="table table-striped">
+    <thead>
+      <th>用户名称</th>
+      <th>所在学院</th>
+      <th>收货地址</th>
+      <th>联系电话</th>
+      <th>创建时间</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.school %></td>
+          <td><%= u.shipping_address %></td>
+          <td><%= u.telephone %></td>
+          <td><%= beautify_date(u.created_at) %></td>
+          <td>
+            <%= link_to '查看', admin_user_path(u.id) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination(@current_page, @users_count, page_size: @page_size) do |page| %>
+  <% admin_users_path(page: page) %>
+  <% end %>
+  <% end %>
+</div>

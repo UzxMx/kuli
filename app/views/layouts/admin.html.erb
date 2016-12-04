@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>森谐友家 | 后台管理</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+    <% if controller_name != 'sessions' %>
+    <ul class="nav nav-tabs" style="margin-top:30px;margin-bottom:30px;">
+      <li role="presentation" class="<% if controller_name == 'home' %>active<% end %>"><%= link_to '首页', admin_path %></li>
+      <li role="presentation" class="<% if controller_name == 'users' %>active<% end %>"><%= link_to '用户管理', admin_users_path %></li>
+      <li role="presentation" class="<% if controller_name == 'orders' %>active<% end %>"><%= link_to '订单管理', admin_orders_path %></li>
+      <li role="presentation" class="<% if controller_name == 'stores' %>active<% end %>"><%= link_to '店铺管理', admin_stores_path %></li>      
+    </ul>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <h4>用户<%= @user.name %>的订单列表</h4>
+  <% if @user.orders.size == 0 %>
+  <p class="text-danger">当前订单列表为空</p>
+  <% else %>
+  <div>共有<%= @user.orders.size %>个订单</div>
+  <table class="table table-striped">
+    <thead>
+      <th>订单编号</th>
+      <th>创建时间</th>
+      <th>创建用户</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @orders.each do |o| %>
+        <tr>
+          <td><%= o.id %></td>
+          <td><%= beautify_date(o.created_at) %></td>
+          <td><%= o.user.name %></td>
+          <td>
+            <%= link_to '查看', admin_order_path(o.id) %>
+            <%= link_to '删除该订单', admin_order_path(o.id), method: :delete, data: {confirm: '确定要删除该订单吗？'} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination(@current_page, @user.orders.size, page_size: @page_size) do |page| %>
+  <% admin_user_orders_path(@user.id, page: page) %>
+  <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6"><h4>店铺信息</h4></div>
+    <div class="col-sm-6" style="text-align:right;">
+      <div>
+        <%= link_to '查看创建人信息', admin_user_path(@store.user.id), class: 'btn btn-default' %>
+        <%= link_to '删除该店铺', admin_store_path(@store.id), method: :delete, data: {confirm: '确定要删除该店铺吗？'}, class: 'btn btn-default' %>
+      </div>      
+    </div>
+  </div>
+  <dl class="dl-horizontal">
+    <dt>店铺名称</dt>
+    <dd><%= @store.name %></dd>
+    <dt>户主姓名</dt>
+    <dd><%= @store.owner_name %></dd>
+    <dt>户主电话</dt>
+    <dd><%= @store.owner_telephone %></dd>
+    <dt>创建日期</dt>
+    <dd><%= beautify_date(@store.created_at) %></dd>    
+    <% if not @store.dian_ping_account.blank? %>
+    <dt>大众点评账号</dt>
+    <dd><%= @store.dian_ping_account %></dd>
+    <% end %>
+    <% if not @store.mei_tuan_account.blank? %>
+    <dt>美团账号</dt>
+    <dd><%= @store.mei_tuan_account %></dd>
+    <% end %>
+    <dt>营业执照图片</dt>
+    <dd>
+      <%= image_tag @store.license_picture.url %>
+    </dd>    
+  </dl>  
+</div>

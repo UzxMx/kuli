@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6"><h4>订单信息</h4></div>
+    <div class="col-sm-6" style="text-align:right;">
+      <div>
+        <%= link_to '查看用户信息', admin_user_path(@order.user.id), class: 'btn btn-default' %>
+        <%= link_to '删除该订单', admin_order_path(@order.id), method: :delete, data: {confirm: '确定要删除该订单吗？'}, class: 'btn btn-default' %>
+      </div>      
+    </div>
+  </div>
+  <dl class="dl-horizontal">
+    <% @order.order_products.each do |item| %>
+      <dt><%= item.product.name %></dt>
+      <dd><%= item.count %></dd>
+    <% end %>
+    <dt>创建日期</dt>
+    <dd><%= beautify_date(@order.created_at) %></dd>
+  </dl>  
+</div>

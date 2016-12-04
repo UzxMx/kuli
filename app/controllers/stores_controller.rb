@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @page_size = Kuli::Application::PAGE_SIZE
