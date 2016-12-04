@@ -22,6 +22,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :open_id, null: false, default: ""
       t.string :raw_auth, null: false, default: ""
 
+      t.string :name, null: false, default: ""
+      t.string :school, null: false, default: ""
+      t.string :shipping_address, null: false, default: ""
+      t.string :telephone, null: false, default: ""
+      t.boolean :info_filled, null: false, default: false
+
+      t.belongs_to :region, null: true
+
+      t.integer :stores_count, default: 0
+      t.integer :orders_count, default: 0
 
       t.timestamps null: false
     end
@@ -29,5 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
     add_index :users, :open_id, unique: true
+    add_attachment :users, :id_card_picture
+    add_attachment :users, :id_card_reverse_picture
   end
 end

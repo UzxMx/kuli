@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%= render 'common/header_navbar' %>
 
-<h1>Orders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<div class="container-fluid">
+  <h4>订单列表</h4>
+  <% if @orders.size == 0 %>
+  <p class="text-danger">当前订单列表为空</p>
+  <% else %>
+  <div>共有<%= current_user.orders.size %>个订单</div>
+  <table class="table table-striped">
+    <thead>
+      <th>订单编号</th>
+      <th>创建日期</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @orders.each do |o| %>
+        <tr>
+          <td><%= o.id %></td>
+          <td><%= beautify_date(o.created_at) %></td>
+          <td>
+            <%= link_to '查看', order_path(o.id) %>
+            <%= link_to '删除', order_path(o.id), method: :delete, data: {confirm: '确定要删除该订单吗？'} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination(@current_page, current_user.orders.size, page_size: @page_size) do |page| %>
+  <% orders_path(page: page) %>
+  <% end %>
+  <% end %>
+</div>

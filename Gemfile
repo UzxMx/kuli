@@ -32,6 +32,11 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
+gem 'compass-rails'
+gem 'bootstrap-sass'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

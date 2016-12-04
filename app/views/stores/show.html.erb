@@ -1,0 +1,20 @@
+<%= render 'common/header_navbar' %>
+
+<div class="container-fluid">
+  <h4>店铺信息</h4>
+  <div>
+    <%= link_to '删除该店铺', store_path(@store.id), method: :delete, data: {confirm: '确定要删除该店铺吗？'} %>
+  </div>
+  <dl class="dl-horizontal">
+    <dt>店铺名称</dt>
+    <dd><%= @store.name %></dd>
+    <dt>户主姓名</dt>
+    <dd><%= @store.owner_name %></dd>
+    <dt>户主电话</dt>
+    <dd><%= @store.owner_telephone %></dd>
+    <dt>营业执照图片</dt>
+    <dd>
+      <%= image_tag @store.license_picture.url %>
+    </dd>
+  </dl>
+</div>

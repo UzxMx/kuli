@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= render 'common/header_navbar' %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<div class="container-fluid">
+  <h4>订单信息</h4>
+  <div>
+    <%= link_to '删除该订单', order_path(@order.id), method: :delete, data: {confirm: '确定要删除该订单吗？'} %>
+  </div>
+  <dl class="dl-horizontal">
+    <% @order.order_products.each do |item| %>
+      <dt><%= item.product.name %></dt>
+      <dd><%= item.count %></dd>
+    <% end %>
+    <dt>创建日期</dt>
+    <dd><%= beautify_date(@order.created_at) %></dd>
+  </dl>
+</div>

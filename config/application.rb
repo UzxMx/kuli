@@ -14,5 +14,8 @@ module Kuli
 
     WECHAT_APP_ID = 'wx8035a1ddcde237dc'
     WECHAT_APP_SECRET = 'bf37388e9b00d6005e04ca832e87f9db'
+
+    PAGE_SIZE = 10
+    MAX_SHOWN_PAGES = 7
   end
 end

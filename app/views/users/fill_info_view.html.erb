@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <form action="<%= users_fill_info_path %>" method="post" enctype="multipart/form-data">
+    <h4>首次登录请完善以下信息</h4>
+    <hr>
+
+    <h4>用户信息</h4>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="姓名" name="name" required>
+        </div>
+      </div>    
+      <div class="form-group">
+        <label class="col-sm-2 control-label">所在院校</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="所在院校" name="school" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">收货地址</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="收货地址" name="shipping_address" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">联系方式</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="联系方式" name="telephone" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">身份证正面图片</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control" name="id_card_picture" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">身份证反面图片</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control" name="id_card_reverse_picture" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">区域</label>
+        <div class="col-sm-10">
+          <select name="region" class="form-control" required>
+            <% @regions.each do |r| %>
+            <option value="<%= r.id %>"><%= r.name %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+      </div>                        
+    </div>
+  </form>
+</div>

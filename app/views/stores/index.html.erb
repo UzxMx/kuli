@@ -1,0 +1,30 @@
+<%= render 'common/header_navbar' %>
+
+<div class="container-fluid">
+  <h4>店铺列表</h4>
+  <% if @stores.size == 0 %>
+  <p class="text-danger">当前店铺列表为空</p>
+  <% else %>
+  <div>共有<%= current_user.stores.size %>个店铺</div>
+  <table class="table table-striped">
+    <thead>
+      <th>店铺名称</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @stores.each do |s| %>
+        <tr>
+          <td><%= s.name %></td>
+          <td>
+            <%= link_to '查看', store_path(s.id) %>
+            <%= link_to '删除', store_path(s.id), method: :delete, data: {confirm: '确定要删除该店铺吗？'} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination(@current_page, current_user.stores.size, page_size: @page_size) do |page| %>
+  <% stores_path(page: page) %>
+  <% end %>
+  <% end %>
+</div>

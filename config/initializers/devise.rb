@@ -249,7 +249,8 @@ Devise.setup do |config|
   #
   config.warden do |manager|
   #   manager.intercept_401 = false
-    manager.default_strategies(scope: :user).unshift :wechat_authenticatable
+    manager.default_strategies(scope: :user).unshift :mock_authenticatable, :wechat_authenticatable
+    # manager.default_strategies(scope: :user).unshift :wechat_authenticatable
   end
 
   # ==> Mountable engine configurations

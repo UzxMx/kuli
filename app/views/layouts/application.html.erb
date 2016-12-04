@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kuli</title>
+    <title>森谐友家</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= yield %>
   </body>
 </html>
