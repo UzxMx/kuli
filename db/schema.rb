@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203085002) do
+ActiveRecord::Schema.define(version: 20161204043045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20161203085002) do
     t.string   "license_picture_content_type"
     t.integer  "license_picture_file_size"
     t.datetime "license_picture_updated_at"
+    t.string   "dian_ping_account",            default: ""
+    t.string   "mei_tuan_account",             default: ""
     t.index ["user_id"], name: "index_stores_on_user_id", using: :btree
   end
 

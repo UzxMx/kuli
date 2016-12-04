@@ -12,6 +12,14 @@
     <dd><%= @store.owner_name %></dd>
     <dt>户主电话</dt>
     <dd><%= @store.owner_telephone %></dd>
+    <% if not @store.dian_ping_account.blank? %>
+    <dt>大众点评账号</dt>
+    <dd><%= @store.dian_ping_account %></dd>
+    <% end %>
+    <% if not @store.mei_tuan_account.blank? %>
+    <dt>美团账号</dt>
+    <dd><%= @store.mei_tuan_account %></dd>
+    <% end %>
     <dt>营业执照图片</dt>
     <dd>
       <%= image_tag @store.license_picture.url %>

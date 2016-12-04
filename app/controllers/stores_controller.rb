@@ -8,7 +8,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    @store = Store.where(id: params[:id], user: current_user)
+    @store = Store.where(id: params[:id], user: current_user).first
   end
 
   def new
@@ -18,7 +18,7 @@ class StoresController < ApplicationController
   end
 
   def create
-    store = Store.new(name: params[:name], owner_name: params[:owner_name], owner_telephone: params[:owner_telephone], license_picture: params[:license_picture], user: current_user)
+    store = Store.new(name: params[:name], owner_name: params[:owner_name], owner_telephone: params[:owner_telephone], license_picture: params[:license_picture], dian_ping_account: params[:dian_ping_account], mei_tuan_account: params[:mei_tuan_account], user: current_user)
     store.save!
 
     redirect_to store_path(store.id)
